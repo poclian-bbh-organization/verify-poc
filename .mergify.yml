@@ -2,4 +2,9 @@ queue_rules:
   - name: default
     merge_conditions: []
 
-pull_request_rules: []
+merge_protections:
+  - name: source changes need a review
+    if:
+      - files~=^src/
+    success_conditions:
+      - "#approved-reviews-by>=1"
